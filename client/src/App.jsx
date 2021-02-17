@@ -21,4 +21,4 @@ const App = () => {
     </RestaurantsContextProvider>
     )}
 
-export default App;;
+export default App;
