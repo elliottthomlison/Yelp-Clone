@@ -9,10 +9,10 @@ const RestaurantList = (props) => {
     try {
       //The info in the brackets will attach onto whatever the BaseURL is 
       const response = await RestaurantFinder.get('/') 
-      setRestaurants(response.data.data.restaurants)
+      setRestaurants(response.data.data.restaurants);
     } catch (error) {}
   };
-  
+
   fetchData();
 }, []);
 
