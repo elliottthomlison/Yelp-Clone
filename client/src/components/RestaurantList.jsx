@@ -1,21 +1,6 @@
-import React, {useEffect} from 'react'
-import RestaurantFinder from '../apis/RestaurantFinder.js'
-import { RestaurantsContext } from '../context/RestaurantsContext.js';
+import React from 'react'
 
-const RestaurantList = (props) => {
-    const {restaurants, setRestaurants} = useContext(RestaurantsContext)
-  useEffect(() => {
-    const fetchData = async () => {
-    try {
-      //The info in the brackets will attach onto whatever the BaseURL is 
-      const response = await RestaurantFinder.get('/') 
-      setRestaurants(response.data.data.restaurants);
-    } catch (error) {}
-  };
-
-  fetchData();
-}, []);
-
+const RestaurantList = () => {
   return (
     <div className="list-group">
       <table className="table table-hover table-dark">
