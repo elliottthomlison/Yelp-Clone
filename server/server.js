@@ -4,11 +4,24 @@ const express = require("express")
 //create an instance of express = achieved by storing it into a variable
 const app = express()
 
-app.get('/getRestaurants', (req, res) => {
-  res.json({
+//get grabs multiple restaurants
+app.get('/api/v1/restaurants', (req, res) => {
+  res.status(200).json({
     status: 'success',
-    restaurant: "mcdonalds",
-  }) 
+    data: {
+      restaurant: ["mcdonalds", 'wendys'],
+    }
+  }); 
+});
+
+//get a single restaurant
+app.get('/api/v1/restaurants/:id', (req, res) => {
+  console.log(req.params)
+})
+
+//create restaurant
+app.post('/api/v1/restaurants', (req, res) => {
+  console.log(req);
 })
 
 //via .env the port number is called and process.env.PORT calls that number
