@@ -10,15 +10,21 @@ app.use(express.json)
 //get grabs multiple restaurants
 app.get('/api/v1/restaurants', async (req, res) => {
 
-  const results = await db.query('select * from restaurants')
-  console.log(results)
+  try {
+    const results = await db.query('select * from restaurants')
+    console.log(req.params.id)
 
-  res.status(200).json({
-    status: 'success',
-    data: {
-      restaurant: ["mcdonalds", 'wendys'],
-    }
-  }); 
+    res.status(200).json({
+      status: 'success',
+      results: results.rows.length, 
+      data: {
+        restaurant: results.rows,
+      }
+    });  
+  } catch (error) {
+    console.log(error)
+  }
+
 });
  
 //get a single restaurant
