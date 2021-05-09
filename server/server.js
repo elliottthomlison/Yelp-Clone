@@ -69,10 +69,16 @@ app.put('/api/v1/restaurants/:id', (req, res), async => {
 })
 
 //delete restaurant
-app.delete('/api/v1/restaurants/:id', (req, res) => {
+app.delete('/api/v1/restaurants/:id', async (req, res) => {
+  try {
+    const results = db.query('DELETE FROM restaurants WHERE id = $1', [req.params.id,
+    ]);
   res.status(204).json({
     status: 'success'
   });
+}catch (error) {
+  console.log(error);
+}
 });
 
 //via .env the port number is called and process.env.PORT calls that number
