@@ -4,8 +4,10 @@ const db = require('./db');
 const morgan = require('morgan');
 //create an instance of express = achieved by storing it into a variable
 const app = express();
+const cors = require('cors');
 
-app.use(express.json)
+app.use(cors());
+app.use(express.json);
 
 //get grabs multiple restaurants
 app.get('/api/v1/restaurants', async (req, res) => {
@@ -13,7 +15,7 @@ app.get('/api/v1/restaurants', async (req, res) => {
   try {
     const results = await db.query
     ('select * from restaurants');
-    console.log(req.params.id)
+    // console.log(req.params.id)
 
     res.status(200).json({
       status: 'success',
@@ -30,7 +32,7 @@ app.get('/api/v1/restaurants', async (req, res) => {
  
 //get a single restaurant
 app.get('/api/v1/restaurants/:id', async (req, res) => {
-  console.log(req.params)
+  // console.log(req.params)
 
   try {
     const results = await db.query(
@@ -44,14 +46,14 @@ app.get('/api/v1/restaurants/:id', async (req, res) => {
       }
     })
   } catch(error) {
-    console.log(error)
+    // console.log(error)
   }
 
 })
 
 //create restaurant
 app.post('/api/v1/restaurants', (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
 })
 
 //update restaurants
@@ -61,10 +63,10 @@ app.put('/api/v1/restaurants/:id', async (req, res) => {
     const results = await db.query(
       'UPDATE restaurants SET name = $1, location = $2, price_range = $3 WHERE id = $4 returning *', [req.body.name, req.body.location, req.body.price_range]
     );
-    console.log(results);
+    // console.log(results);
 
   } catch (error) {
-      console.log(error);
+      // console.log(error);
   }
 })
 
@@ -77,7 +79,7 @@ app.delete('/api/v1/restaurants/:id', async (req, res) => {
     status: 'success'
   });
 }catch (error) {
-  console.log(error);
+  // console.log(error);
 }
 });
 
