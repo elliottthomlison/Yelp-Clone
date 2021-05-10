@@ -56,7 +56,7 @@ app.post('/api/v1/restaurants', (req, res) => {
 
 //update restaurants
 //by putting 'id' it allows express know what restaurant we want to update 
-app.put('/api/v1/restaurants/:id', (req, res), async => {
+app.put('/api/v1/restaurants/:id', async (req, res) => {
   try {
     const results = await db.query(
       'UPDATE restaurants SET name = $1, location = $2, price_range = $3 WHERE id = $4 returning *', [req.body.name, req.body.location, req.body.price_range]
@@ -71,7 +71,7 @@ app.put('/api/v1/restaurants/:id', (req, res), async => {
 //delete restaurant
 app.delete('/api/v1/restaurants/:id', async (req, res) => {
   try {
-    const results = db.query('DELETE FROM restaurants WHERE id = $1', [req.params.id,
+    const results = await db.query('DELETE FROM restaurants WHERE id = $1', [req.params.id,
     ]);
   res.status(204).json({
     status: 'success'
