@@ -1,13 +1,21 @@
 import React from 'react'
 
-const Header = () => {
+const AddRestaurant = () => {
   return (
-    <div>
-      <h1 className="font-weight-light display-1 text-center">
-        Restaurant Finder
-      </h1>
+    <div className="mb-4">
+      <form action="">
+          <div className="form-row">
+            <div className="col">
+              <input className="form-control"  type="text" placeholder="name"/>
+            </div>
+            <div className="col">
+              <input className="form-control" type="text" placeholder="location"/>
+              <select className="custom-select my-1 mr-sm-2"></select>
+            </div>
+          </div>
+      </form>
     </div>
   )
 }
 
-export default Header;
+export default AddRestaurant;
