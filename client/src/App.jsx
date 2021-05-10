@@ -6,7 +6,8 @@ import RestaurantDetailPage from './routes/RestaurantDetailPage'
 
 
 const App = () => {
-    return <div>
+    return (
+    <div className="container">
       <Router>
         <Switch>
           <Route exact path='/' component={Home}/>
@@ -15,6 +16,6 @@ const App = () => {
         </Switch>
       </Router>
     </div>
-}
+    )}
 
 export default App;;
