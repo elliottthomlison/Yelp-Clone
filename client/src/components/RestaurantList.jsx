@@ -1,6 +1,15 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import RestaurantFinder from '../apis/RestaurantFinder.js'
 
 const RestaurantList = () => {
+
+  useEffect(async () => {
+    try {
+      //The info in the brackets will attach onto whatever the BaseURL is 
+      const response = await RestaurantFinder.get('/') 
+    } catch (error) {}
+  }, [])
+
   return (
     <div className="list-group">
       <table className="table table-hover table-dark">
